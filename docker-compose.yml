@@ -1,0 +1,9 @@
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: laravel_react_app
+    restart: unless-stopped
+    ports:
+      - "8000:80"  # Expose port 8000 for Apache
