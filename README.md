@@ -41,14 +41,18 @@ To get the project up and running with Docker, follow these steps:
 ```bash
 git clone https://github.com/wahabdevpro/news-aggregator.git
 cd news-aggregator
+```
 
 ### 2.  Build and run the Docker container
-
+```bash
 docker-compose up --build
+```
 
-#Access the Application
+## Access Application
 
 Once the Docker container is running, you can access the application in your browser:
 
-Laravel API: http://localhost:8000
-React Frontend: The React app is served within the same container and accessible at the same URL.
+```bash
+Laravel API: http://localhost:8000/api
+React Frontend: http://localhost:8000
+```
