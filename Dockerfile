@@ -36,6 +36,9 @@ WORKDIR /var/www/html
 # Copy the Laravel backend files to the container
 COPY backend/ /var/www/html
 
+# Copy the .env-backend file and rename it to .env in the backend folder
+COPY ./docker/.env-backend /var/www/html/.env
+
 # Install Composer for Laravel dependencies
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
 RUN composer install --optimize-autoloader --no-dev
@@ -58,6 +61,9 @@ WORKDIR /frontend
 
 # Copy the frontend files
 COPY frontend/ /frontend
+
+# Copy the .env-frontend file and rename it to .env in the frontend folder
+COPY ./docker/.env-frontend /frontend/.env
 
 # Install frontend dependencies and build the React app
 RUN npm install
