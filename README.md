@@ -1,3 +1,4 @@
+
 # News Aggregator
 
 This project is a full-stack application consisting of a Laravel backend and a React frontend. The backend is an API built with Laravel, and the frontend is built using React and Vite.
@@ -15,16 +16,15 @@ Make sure you have the following installed on your local machine:
 
 The repository is structured as follows:
 
-/backend # Laravel backend (API)
-/frontend # React frontend (Vite)
-/docker # Docker configuration files 
-  ├─ .env-backend # Environment file for the backend (Laravel)
-  ├─ .env-frontend # Environment file for the frontend (React)
-  ├─ apache # Apache config for Laravel
+/backend            # Laravel backend (API)
+/frontend           # React frontend (Vite)
+/docker             # Docker configuration files 
+  ├─ .env-backend   # Environment file for the backend (Laravel)
+  ├─ .env-frontend  # Environment file for the frontend (React)
+  ├─ apache         # Apache config for Laravel
   ├─ docker-entrypoint.sh # Entry point script
-Dockerfile # Dockerfile to build both backend and frontend in one container docker-compose.yml
-
-# Docker Compose configuration
+Dockerfile          # Dockerfile to build both backend and frontend in one container
+docker-compose.yml  # Docker Compose configuration
 
 ## Environment Variables
 
@@ -43,16 +43,46 @@ git clone https://github.com/wahabdevpro/news-aggregator.git
 cd news-aggregator
 ```
 
-### 2.  Build and run the Docker container
+### 2. Build and run the Docker container
+
 ```bash
 docker-compose up --build
 ```
 
-## Access Application
+### 3. Access the Application
 
 Once the Docker container is running, you can access the application in your browser:
 
+- **Laravel API**: http://localhost:8000
+- **React Frontend**: The React app is served within the same container and accessible at the same URL.
+
+## Stopping the Application
+
+To stop the running Docker container, press `CTRL + C` in the terminal where it's running, or use the following command in another terminal:
+
 ```bash
-Laravel API: http://localhost:8000/api
-React Frontend: http://localhost:8000
+docker-compose down
 ```
+
+## Customization
+
+If you need to change environment variables, modify the `.env-backend` and `.env-frontend` files located in the `docker` directory. Then, rebuild the Docker container:
+
+```bash
+docker-compose up --build
+```
+
+## Troubleshooting
+
+- **Port Conflicts**: If `port 8000` is in use on your local machine, update the `ports` section in the `docker-compose.yml` file to use a different port.
+
+Example:
+
+```yaml
+ports:
+  - "8080:80"
+```
+
+## License
+
+This project is licensed under the MIT License. See the LICENSE file for details.
